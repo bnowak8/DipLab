@@ -9,15 +9,13 @@ package dip.lab3;
  * @author mashit
  */
 public class MessengerService {
-    
+
     public MessengerService(){
-        
+     
     }
-    
-        public void getMessage(IMessengerStrategy e){
-            e.renderMessage();
-            e.outPutMessage();
         
-    }
+        public void getMessage(IMessengerInputStrategy input, IMessengerOutputStrategy output){
+            output.outPutMessage(input);
+        }
     
 }

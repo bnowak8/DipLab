@@ -6,16 +6,14 @@ public class StartUp {
     
     public static void main(String[] args) {
         
+
+        
+        IMessengerInputStrategy consoleMessengerInput = new GuiMessenger();
+        IMessengerOutputStrategy consoleMessengerOutput = new ConsoleMessenger();
+        
         MessengerService messenger = new MessengerService();
         
-        IMessengerStrategy guiMessenger = new GuiMessenger();
-        
-        messenger.getMessage(guiMessenger);
-        
-        
-        IMessengerStrategy consoleMessenger = new ConsoleMessenger();
-        
-        messenger.getMessage(consoleMessenger);        
+        messenger.getMessage(consoleMessengerInput ,consoleMessengerOutput);        
     }
     
 }

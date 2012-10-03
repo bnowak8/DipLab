@@ -4,22 +4,20 @@ package dip.lab3;
 import java.util.Scanner;
 
 
-public class ConsoleMessenger implements IMessengerStrategy{
-    private String get_Input = "Enter Message";
-    private String message;
-    
-    public void outPutMessage(){
-        System.out.println(message);
-    }
+public class ConsoleMessenger implements IMessengerInputStrategy, IMessengerOutputStrategy{
+    private final String get_Input = "Enter Message";    
 
-    public void renderMessage(){
+    public Message setMessage() {
         
         Scanner input = new Scanner(System.in);
- 
         System.out.println(get_Input);
-        
-        this.message = input.nextLine();
-        
+        Message msg = new Message(input.nextLine());
+        return msg;
+    }
+
+    public void outPutMessage(IMessengerInputStrategy input) {
+        Message msg = input.setMessage();
+        System.out.println(msg.getMessage());
     }
     
 }

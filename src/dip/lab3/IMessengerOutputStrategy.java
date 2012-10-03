@@ -8,8 +8,6 @@ package dip.lab3;
  *
  * @author bnowak8
  */
-public interface IMessengerStrategy {
-    
-    public void outPutMessage();
-    public void renderMessage();    
+public interface IMessengerOutputStrategy {
+        public void outPutMessage(IMessengerInputStrategy input);
 }

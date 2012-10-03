@@ -10,20 +10,20 @@ import javax.swing.JOptionPane;
  *
  * @author bnowak8
  */
-public class GuiMessenger implements IMessengerStrategy{
-    private String message;
-    private String input_Message = "Enter your message";
+public class GuiMessenger implements IMessengerInputStrategy, IMessengerOutputStrategy{
+    private final String input_Message = "Enter your message";
     
     @Override
-    public void renderMessage(){
-        
-        this.message = JOptionPane.showInputDialog(input_Message);
+    public Message setMessage(){
+        Message msg = new Message(JOptionPane.showInputDialog(input_Message));
+        return msg;
     }
     
     @Override
-    public void outPutMessage(){
+    public void outPutMessage(IMessengerInputStrategy input){
+        Message msg = input.setMessage();
         
-        JOptionPane.showMessageDialog(null, message);
+        JOptionPane.showMessageDialog(null, msg.getMessage());
     }
     
 }
